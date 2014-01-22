@@ -173,7 +173,7 @@
                 *stop = YES;
             }
         }];
-        if (selected) {
+        if (selected && self.showSelectionWithCheckmark) {
 	    cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
         else {
@@ -198,7 +198,6 @@
     selectedView.backgroundColor = self.selectedCellBackgroundColor;
     cell.selectedBackgroundView = selectedView;
     
-//    self.selectedCellTextColor       = [UIColor whiteColor];
     return cell;
 }
 
