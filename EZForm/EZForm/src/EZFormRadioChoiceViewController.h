@@ -64,4 +64,38 @@
 
 @property (nonatomic, assign) BOOL allowsMultipleSelection;
 
+/** Specify whether selection is distinguished by a checkmark
+ *
+ *  Default value is YES
+ */
+@property (nonatomic, assign) BOOL showSelectionWithCheckmark;
+
+/**
+ *  Default value is white
+ */
+@property (nonatomic, strong) UIColor *cellBackgroundColor;
+
+/**
+ *  Default value is black
+ */
+@property (nonatomic, strong) UIColor *cellTextColor;
+
+/**
+ *  Default value is system font with 14.f point size
+ */
+@property (nonatomic, strong) UIFont  *cellTextFont;
+
+/**
+ *  Default value is blue
+ */
+@property (nonatomic, strong) UIColor *selectedCellBackgroundColor;
+
+/**
+ *  Default value is white
+ */
+@property (nonatomic, strong) UIColor *selectedCellTextColor;
+
+
+
+
 @end

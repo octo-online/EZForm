@@ -30,6 +30,12 @@
 {
     [super viewDidLoad];
     self.tableView.allowsMultipleSelection = self.allowsMultipleSelection;
+    self.showSelectionWithCheckmark = YES;
+    self.cellBackgroundColor            = [UIColor whiteColor];
+    self.cellTextColor                  = [UIColor blackColor];
+    self.cellTextFont                   = [UIFont systemFontOfSize:14.f];
+    self.selectedCellBackgroundColor    = [UIColor blueColor];
+    self.selectedCellTextColor          = [UIColor whiteColor];
 }
 
 - (BOOL)shouldAutorotate
@@ -82,7 +88,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (nil == cell) {
-	cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [self configureCellWithIdentifier:CellIdentifier];
     }
     
     EZFormRadioField *field = [self.form formFieldForKey:self.radioFieldKey];
@@ -95,7 +101,12 @@
     }
 
     if ([(NSArray *)modelValueArray containsObject:choiceKey]) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        if (self.showSelectionWithCheckmark) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     }
     else {
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -124,6 +135,7 @@
         [self.form setModelValue:choiceKey forKey:self.radioFieldKey];
     }
 
+    
     [self updateCellCheckmarks];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -159,7 +171,27 @@
         else {
 	    cell.accessoryType = UITableViewCellAccessoryNone;
         }
+        cell.selected = selected;
     }
+}
+
+
+#pragma mark - Cell cutomization
+
+- (UITableViewCell*)configureCellWithIdentifier:(NSString*)identifier
+{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                   reuseIdentifier:identifier];
+    cell.textLabel.textColor    = self.cellTextColor;
+    cell.textLabel.font         = self.cellTextFont;
+    cell.backgroundColor        = self.cellBackgroundColor;
+    
+    UIView *selectedView = [[UIView alloc] initWithFrame:cell.bounds];
+    selectedView.backgroundColor = self.selectedCellBackgroundColor;
+    cell.selectedBackgroundView = selectedView;
+    
+//    self.selectedCellTextColor       = [UIColor whiteColor];
+    return cell;
 }
 
 @end
