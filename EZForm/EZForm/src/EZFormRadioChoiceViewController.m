@@ -26,16 +26,24 @@
 
 @implementation EZFormRadioChoiceViewController
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.showSelectionWithCheckmark = YES;
+        self.cellBackgroundColor            = [UIColor whiteColor];
+        self.cellTextColor                  = [UIColor blackColor];
+        self.cellTextFont                   = [UIFont systemFontOfSize:14.f];
+        self.selectedCellBackgroundColor    = [UIColor blueColor];
+        self.selectedCellTextColor          = [UIColor whiteColor];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.tableView.allowsMultipleSelection = self.allowsMultipleSelection;
-    self.showSelectionWithCheckmark = YES;
-    self.cellBackgroundColor            = [UIColor whiteColor];
-    self.cellTextColor                  = [UIColor blackColor];
-    self.cellTextFont                   = [UIFont systemFontOfSize:14.f];
-    self.selectedCellBackgroundColor    = [UIColor blueColor];
-    self.selectedCellTextColor          = [UIColor whiteColor];
 }
 
 - (BOOL)shouldAutorotate
