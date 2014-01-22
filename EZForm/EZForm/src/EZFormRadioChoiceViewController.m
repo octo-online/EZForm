@@ -193,6 +193,7 @@
     cell.textLabel.textColor    = self.cellTextColor;
     cell.textLabel.font         = self.cellTextFont;
     cell.backgroundColor        = self.cellBackgroundColor;
+    cell.textLabel.highlightedTextColor = self.selectedCellTextColor;
     
     UIView *selectedView = [[UIView alloc] initWithFrame:cell.bounds];
     selectedView.backgroundColor = self.selectedCellBackgroundColor;
