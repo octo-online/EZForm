@@ -43,7 +43,8 @@ typedef BOOL (^EZFormFieldValidator)(id value);	    // block validator
 @property (nonatomic, weak, readonly) EZForm *form;
 @property (nonatomic, strong) UIView *inputAccessoryView;
 @property (nonatomic, copy) NSString *key;
-
+@property (nonatomic, strong) UILabel *fieldTitleLabel;
+@property (nonatomic, assign) BOOL markTitleLabelInRedWhenInvalid;
 
 /** Initialises an allocated EZFormField object with the specified key.
  *
